@@ -18,15 +18,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var resetTimer: UIButton!
     
+    
+    
     var secondsElapsed = 0
     var timer = Timer()
     var lapTimeArray = [String]()
+    
     override func viewDidLoad() {
             super.viewDidLoad()
-      
+        self.tableView.delegate = self
+           self.tableView.dataSource = self
             //timerLabel.text = "Tap Start."
             // Do any additional setup after loading the view, typically from a nib.
         }
+   
+    
+    
+  /*  @IBAction func segMented(_ sender: Any) {
+        switch SegmentedControl.selectedSegmentIndex{
+        case 0:
+            timerLabel.isHidden = false
+            startStopBtn.isHidden = false
+            stopTimerBtn.isHidden = false
+            lapBtn.isHidden = false
+            tableView.isHidden = false
+            resetTimer.isHidden = false
+            datePick.isHidden = true
+        case 1:
+            timerLabel.isHidden = true
+            startStopBtn.isHidden = true
+            stopTimerBtn.isHidden = true
+            lapBtn.isHidden = true
+            tableView.isHidden = true
+            resetTimer.isHidden = true
+            datePick.isHidden = false
+        default:
+            break
+        }
+    }*/
+    
+       
+    
     @IBAction func startBtn(_ sender: Any) {
     
     
@@ -53,11 +85,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func resetTimer(_ sender: Any) {
         lapBtn.isHidden = false
         resetTimer.isHidden = true
+        
     }
     
     @IBAction func LapTimer(_ sender: Any) {
         lapTimeArray.append(timerLabel.text!)
         tableView.reloadData()
+        print(lapTimeArray)
         
     }
     
