@@ -7,13 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
    
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startStopBtn: UIButton!
     @IBOutlet weak var stopTimerBtn: UIButton!
     
+    @IBOutlet weak var lapBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var resetTimer: UIButton!
     
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
     var lapTimeArray = [String]()
     override func viewDidLoad() {
             super.viewDidLoad()
+      
             //timerLabel.text = "Tap Start."
             // Do any additional setup after loading the view, typically from a nib.
         }
@@ -49,7 +51,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetTimer(_ sender: Any) {
-      print("reset")
+        lapBtn.isHidden = false
+        resetTimer.isHidden = true
     }
     
     @IBAction func LapTimer(_ sender: Any) {
@@ -59,10 +62,10 @@ class ViewController: UIViewController {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
-    
+    //chb
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return lapTimeArray.count
